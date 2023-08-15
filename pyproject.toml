@@ -5,7 +5,7 @@ description = "FastAPI Boilerplate"
 authors = ["Abbas <me@abbasmj.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.10"
 alembic = "^1.9.4"
 SQLAlchemy = "^2.0.4"
 PyJWT = "^2.6.0"

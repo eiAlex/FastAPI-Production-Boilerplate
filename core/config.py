@@ -2,6 +2,8 @@ from enum import Enum
 
 from pydantic import BaseSettings, PostgresDsn, RedisDsn
 
+import os
+
 
 class EnvironmentType(str, Enum):
     DEVELOPMENT = "development"
@@ -19,11 +21,13 @@ class Config(BaseConfig):
     DEFAULT_LOCALE: str = "en_US"
     ENVIRONMENT: str = EnvironmentType.DEVELOPMENT
     POSTGRES_URL: PostgresDsn = (
-        "postgresql+asyncpg://user:password@127.0.0.1:5432/db-name"
+        #"postgresql+asyncpg://user:password@127.0.0.1:5432/db-name"
+       # os.environ.get('POSTGRES_URL')
+      "postgresql+asyncpg://postgres:password123@127.0.0.1:5432/fastapi-db"
     )
     REDIS_URL: RedisDsn = "redis://localhost:6379/7"
     RELEASE_VERSION: str = "0.1"
-    SHOW_SQL_ALCHEMY_QUERIES: int = 0
+    SHOW_SQL_ALCHEMY_QUERIES: int = 1
     SECRET_KEY: str = "super-secret-key"
     JWT_ALGORITHM: str = "HS256"
     JWT_EXPIRE_MINUTES: int = 60 * 24
